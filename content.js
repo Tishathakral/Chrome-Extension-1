@@ -3,6 +3,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "toggleMic") {
         toggleMicState(sendResponse);
         return true; // Keep the message channel open for async response
+    } else if (request.action === "checkMicStatus") {
+        const micStatus = isMicMuted() ? "muted" : "unmuted";
+        sendResponse({ status: micStatus });
+        return true; // Keep the message channel open for async response
     }
 });
 

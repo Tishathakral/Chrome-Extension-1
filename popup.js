@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const toggleButton = document.createElement("button");
             toggleButton.classList.add("toggle-button");
 
-            // Initial button text
+            // Check mic status on load
             chrome.tabs.sendMessage(tab.id, { action: "checkMicStatus" }, (response) => {
                 toggleButton.textContent = response?.status === "muted" ? "Unmute" : "Mute";
                 toggleButton.classList.toggle("muted", response?.status === "muted");
