@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const meetingItem = document.createElement("div");
             meetingItem.classList.add("meeting-item");
 
+            const icon = document.createElement("i");
+            icon.classList.add("fas", "fa-video"); // Using a video icon for the meeting
+            icon.classList.add("meeting-icon");
+
             const title = document.createElement("p");
             title.textContent = tab.title;
 
@@ -46,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             };
 
+            meetingItem.appendChild(icon);
             meetingItem.appendChild(title);
             meetingItem.appendChild(toggleButton);
             meetingsList.appendChild(meetingItem);
