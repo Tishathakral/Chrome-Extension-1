@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const meetingsList = document.getElementById("meetingsList");
 
+    // Notify user to reload the meeting if the extension is refreshed
+    chrome.storage.local.get("notified", (data) => {
+        if (!data.notified) {
+            alert("Please reload your Google Meet tab to apply the changes.");
+            chrome.storage.local.set({ notified: true });
+        }
+    });
+
     // Fetch all active Google Meet tabs
     chrome.runtime.sendMessage({ action: "getMeetTabs" }, (response) => {
         meetingsList.innerHTML = "";
@@ -21,14 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Check mic status on load
             chrome.tabs.sendMessage(tab.id, { action: "checkMicStatus" }, (response) => {
-                toggleButton.textContent = response?.status === "muted" ? "Unmute" : "Mute";
+                toggleButton.innerHTML = response?.status === "muted" 
+                    ? '<i class="fas fa-microphone-slash"></i> Unmute' 
+                    : '<i class="fas fa-microphone"></i> Mute';
                 toggleButton.classList.toggle("muted", response?.status === "muted");
             });
 
             toggleButton.onclick = () => {
                 chrome.tabs.sendMessage(tab.id, { action: "toggleMic" }, (response) => {
                     if (response?.status) {
-                        toggleButton.textContent = response.status === "muted" ? "Unmute" : "Mute";
+                        toggleButton.innerHTML = response.status === "muted" 
+                            ? '<i class="fas fa-microphone-slash"></i> Unmute' 
+                            : '<i class="fas fa-microphone"></i> Mute';
                         toggleButton.classList.toggle("muted", response.status === "muted");
                     }
                 });

@@ -40,6 +40,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-button i {
+    margin-right: 5px;
 }
 
 .toggle-button.muted {
