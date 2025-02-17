@@ -13,11 +13,11 @@ A Chrome extension that allows users to easily mute and unmute their microphone 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/google-meet-mic-controller.git
+   git clone https://github.com/Tishathakral/Chrome-Extension-1.git
    ```
 2. Navigate to the extension directory:
    ```bash
-   cd google-meet-mic-controller
+   cd Chrome-Extension-1
    ```
 3. Open Chrome and go to `chrome://extensions/`.
 4. Enable "Developer mode" in the top right corner.
@@ -35,16 +35,3 @@ A Chrome extension that allows users to easily mute and unmute their microphone 
 - CSS
 - JavaScript
 - Chrome Extensions API
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Font Awesome](https://fontawesome.com/) for the icons used in the extension.
-- The Chrome Extensions documentation for guidance on building extensions.
